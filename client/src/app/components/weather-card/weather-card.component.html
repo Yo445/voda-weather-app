@@ -1,0 +1,53 @@
+<div class="w-80 mx-auto p-4 bg-white shadow-lg rounded-lg relative">
+  <!-- City Name -->
+  <h2 class="text-xl font-bold text-center mb-4">{{ city.city }}</h2>
+
+  <!-- Weather Icon -->
+  <div class="text-center mb-4">
+    <img
+      [src]="getWeatherIcon()"
+      [alt]="city.city"
+      class="mx-auto w-[10em] h-[10em] object-contain"
+    />
+  </div>
+
+  <!-- Temperature -->
+  <div class="text-center text-3xl font-medium mb-4">
+    {{ getTemperature() }}°{{ selectedUnit }}
+  </div>
+
+  <!-- Unit Toggle -->
+  <div class="flex justify-center gap-4 mb-4">
+    <button
+      class="px-4 py-2 bg-gray-200 rounded focus:outline-none"
+      [class.bg-blue-500]="selectedUnit === 'C'"
+      [class.text-white]="selectedUnit === 'C'"
+      (click)="selectedUnit = 'C'"
+    >
+      Celsius
+    </button>
+    <button
+      class="px-4 py-2 bg-gray-200 rounded focus:outline-none"
+      [class.bg-blue-500]="selectedUnit === 'F'"
+      [class.text-white]="selectedUnit === 'F'"
+      (click)="selectedUnit = 'F'"
+    >
+      Fahrenheit
+    </button>
+  </div>
+
+  <!-- Dropdown for Date -->
+  <div class="absolute top-2 right-2">
+    <select
+      class="border p-2 rounded"
+      [(ngModel)]="selectedDate"
+    >
+      <option
+        *ngFor="let forecast of city.forecast"
+        [value]="forecast.date"
+      >
+        {{ forecast.date }}
+      </option>
+    </select>
+  </div>
+</div>
