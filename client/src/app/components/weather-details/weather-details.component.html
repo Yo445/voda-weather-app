@@ -1,0 +1,24 @@
+<div class="container mx-auto p-6">
+  <!-- Loading State -->
+   @if (isLoading) {
+      <app-loader></app-loader>
+       }
+   @else{
+    
+  <!-- City Details -->
+   <div>
+    <div class="shadow-lg p-6 bg-gray-200 bg-opacity-20 backdrop-blur-sm  rounded-lg">
+      <h2 class="text-2xl text-purple-100 font-semibold mb-4 text-center justify-center">Weather Forecast for {{ cityData?.city }} </h2>
+      <ul class="space-y-4">
+        @for (forecast of cityData?.forecast; track $index) {
+          <li class="p-4 bg-gray-300 bg-opacity-25 backdrop-blur-md text-gray-900 shadow rounded ">
+            <p><strong>Date:</strong> {{ forecast.date }}</p>
+            <p><strong>Temperature:</strong> {{ forecast.temperatureCelsius }}°C / {{ forecast.temperatureFahrenheit }}°F</p>
+            <p><strong>Humidity:</strong> {{ forecast.humidity }}%</p>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+}
+</div>

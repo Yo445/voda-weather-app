@@ -11,8 +11,8 @@ This project provides a simple UI to view weather data for cities worldwide. Use
    Use a search bar to fetch weather details for a specific city.  
    *Hint:* Use the API endpoint `/cityForecast/:cityId` to retrieve data for a specific city.
    
-3. **Search by Date**  
-   Use a date picker to view weather information for a specific date.  
+3. **Filter by Date**  
+   Use a date dropdown to view weather information for a specific date.  
    *Note:* Each city object contains the entire forecast in the `forecast` property.
    
 4. **Temperature Unit Toggle**  
@@ -37,7 +37,16 @@ The application integrates with a REST API to fetch weather data.
 | `GET`  | `/forecast`            | Returns weather for all cities | `Array<City>`            |
 | `GET`  | `/cityForecast/:cityId`| Returns weather for one city   | `City`                   |
 
-### Types
+### Run Backend
+Our API was created using Node.js v10.6.0. Other versions may or may not work correctly. 
+#### Installation 
+1. **In ./src run:** 
+- npm ci 
+
+#### Run 
+2. **In ./src run:** 
+- npm start  
+
 
 #### City Interface
 

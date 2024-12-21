@@ -1,53 +1,64 @@
-<div class="w-80 mx-auto p-4 bg-white shadow-lg rounded-lg relative">
+<div
+  class="mx-auto p-4 shadow-lg rounded-lg relative bg-gray-200 bg-opacity-15 backdrop-blur-sm"
+>
   <!-- City Name -->
-  <h2 class="text-xl font-bold text-center mb-4">{{ city.city }}</h2>
+  <h2 class="text-2xl absolute top-2 left-5 text-center mb-4 mr-9 text-white">
+    {{ city.city }}
+  </h2>
 
   <!-- Weather Icon -->
-  <div class="text-center mb-4">
+  <div class="text-center mb-4 mt-10">
     <img
-      [src]="getWeatherIcon()"
+      [src]="getCityIcon()"
       [alt]="city.city"
       class="mx-auto w-[10em] h-[10em] object-contain"
     />
   </div>
 
-  <!-- Temperature -->
-  <div class="text-center text-3xl font-medium mb-4">
-    {{ getTemperature() }}°{{ selectedUnit }}
-  </div>
+  <div class="p-6 rounded-md">
+    <!-- Temperature -->
+    <div class="text-center text-3xl font-medium mb-4 text-[#ffdea0]">
+      {{ getTemperature() }}°{{ selectedUnit }}
+    </div>
 
-  <!-- Unit Toggle -->
-  <div class="flex justify-center gap-4 mb-4">
-    <button
-      class="px-4 py-2 bg-gray-200 rounded focus:outline-none"
-      [class.bg-blue-500]="selectedUnit === 'C'"
-      [class.text-white]="selectedUnit === 'C'"
-      (click)="selectedUnit = 'C'"
-    >
-      Celsius
-    </button>
-    <button
-      class="px-4 py-2 bg-gray-200 rounded focus:outline-none"
-      [class.bg-blue-500]="selectedUnit === 'F'"
-      [class.text-white]="selectedUnit === 'F'"
-      (click)="selectedUnit = 'F'"
-    >
-      Fahrenheit
-    </button>
+    <!-- Unit Toggle -->
+    <div class="flex justify-center gap-4 mb-4">
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          value=""
+          class="sr-only peer"
+          (change)="toggleUnit($event)"
+          [checked]="selectedUnit === 'F'"
+        />
+        <div
+          class="group peer ring-0 bg-[#665796] rounded-full outline-none duration-300 after:duration-300 w-24 h-12 shadow-md peer-checked:bg-[#985fc0] peer-focus:outline-none after:content-['Ce'] after:rounded-full after:absolute after:bg-gray-50 after:outline-none after:h-10 after:w-10 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-12 peer-checked:after:content-['Fa'] peer-hover:after:scale-95"
+        ></div>
+      </label>
+    </div>
   </div>
 
   <!-- Dropdown for Date -->
   <div class="absolute top-2 right-2">
     <select
-      class="border p-2 rounded"
+      class="p-2 text-gray-200 rounded bg-gray-200 bg-opacity-20 outline-none backdrop-blur-md"
       [(ngModel)]="selectedDate"
     >
-      <option
-        *ngFor="let forecast of city.forecast"
-        [value]="forecast.date"
-      >
+      @for (forecast of city.forecast; track $index) {
+      <option class="bg-black">
         {{ forecast.date }}
       </option>
+      }
     </select>
+  </div>
+
+  <!-- View More Button -->
+  <div class="text-center mt-6">
+    <button
+      class="relative px-3 py-1 rounded-xl bg-gray-200 bg-opacity-15 backdrop-blur-sm text-white isolation-auto z-10 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-purple-900 before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+      [routerLink]="['/weather-details', city.id]"
+    >
+      view more
+    </button>
   </div>
 </div>

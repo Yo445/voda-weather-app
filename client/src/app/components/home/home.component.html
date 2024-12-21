@@ -1,0 +1,27 @@
+<div>
+  <!-- Hero Section -->
+  <section class="relative z-10 text-center text-pink-100">
+    <h1 class="text-5xl font-bold mb-4">Weather App</h1>
+    <p class="text-xl">Find weather updates for your favorite cities</p>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="max-w-2xl mx-auto mb-6 mt-10 relative z-20">
+    <input
+      type="text"
+      placeholder="Search for a city..."
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange()"
+      class="w-full px-4 py-2 text-gray-200 rounded shadow-lg focus:outline-none focus:ring-2 focus:ring-[#985fc0] bg-gray-200 bg-opacity-50 outline-none backdrop-blur-md placeholder-gray-200"
+    />
+  </div>
+
+  <!-- Weather Cards -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 mt-14 relative z-20"
+  >
+    @for (city of filteredCities; track $index) {
+    <app-weather-card [city]="city"></app-weather-card>
+    }
+  </div>
+</div>
