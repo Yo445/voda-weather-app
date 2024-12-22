@@ -1,6 +1,8 @@
-# Weather App UI Components
+# Weather App UI:
 
-Here are the UI components for the Weather App:
+## Video Preview
+
+[![Video Preview](https://github.com/user-attachments/assets/2efdb857-7ced-4715-a252-099f24feea79)](https://github.com/user-attachments/assets/2efdb857-7ced-4715-a252-099f24feea79)
 
 ---
 
@@ -16,9 +18,7 @@ Here are the UI components for the Weather App:
 
 ---
 
-## Video Preview
 
-[![Video Preview](https://github.com/user-attachments/assets/2efdb857-7ced-4715-a252-099f24feea79)](https://github.com/user-attachments/assets/2efdb857-7ced-4715-a252-099f24feea79)
 
 This project provides a simple UI to view weather data for cities worldwide. Users can explore weather forecasts, search for specific cities or dates, and toggle between temperature units.
 
